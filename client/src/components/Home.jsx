@@ -1,45 +1,103 @@
-import React from "react"
-import { useState, useEffect } from "react"
-import { useDispatch, useSelector} from "react-redux"
-import { getCountries } from "../actions"
-import { Link } from "react-router-dom"
+import React from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAllCountries,
+  filterCountriesByContinent,
+  FilterActivity,
+  orderByName,
+} from "../actions";
+import { Link } from "react-router-dom";
+import Card from "./Card";
+import Paginated from "./Paginated";
 
-export default function Home(){
+export default function Home() {
+  const dispatch = useDispatch();
+  const allCountries = useSelector((state) => state.countries);
+  const [order, setOrder] = useState(""); //estado local vacio
+  const [currentPage, setCurrentPage] = useState(1);
+  const [countriesPerPage, setCountriesPerPage] = useState(9);
+  const lastCountry = currentPage * countriesPerPage;
+  const firstCountry = lastCountry - countriesPerPage;
+  const currentCountries = allCountries.slice(firstCountry, lastCountry);
 
-const dispatch = useDispatch()
-const allCountries = useSelector((state) => state.countries)
+  //   const allActivities = useSelector((state)=> state.activities)
+  //   const mapActivities = allActivities.map((e)=> e.name)
+  //   const uniqueActivities = mapActivities.filter((item, index)=>{
+  //     return mapActivities.indexOf(item) === index;
+  //   })
 
-useEffect(()=>{
-    dispatch(getCountries())
-},[])
+  const paginated = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
-function handleClick(e){
- e.preventDefault()
- dispatch(getCountries())
-}
+  useEffect(() => {
+    dispatch(getAllCountries());
+  }, [dispatch]);
 
-return(
+  function handleClick(e) {
+    e.preventDefault();
+    dispatch(getAllCountries());
+  }
+
+  function handleFilterContinent(e) {
+    dispatch(filterCountriesByContinent(e.target.value));
+  }
+
+  //   function handleSelect(e){
+  //     e.preventDefault()
+  //     dispatch(FilterActivity(e.target.value))
+  //   }
+
+  function handleSort(e) {
+    e.preventDefault();
+    dispatch(orderByName(e.target.value));
+    setCurrentPage(1);
+    setOrder(`Ordered ${e.target.value}`);
+  }
+
+  return (
     <div>
-        <Link to ="/activities">Crear actividad</Link>
-        <h1>Todos los paises al alcance de tu pantalla</h1>
-        <button onClick={(e) =>handleClick(e)}>Recargar Paises</button>
-        <div>
-            <select >
-                <option value="asc">Ascendente</option>
-                <option value="desc">Descendente</option>
-            </select>
-            <select >
-                <option value="All">Todos</option>
-                <option value="Asia">Asia</option>
-                <option value="North America">North America</option>
-                <option value="Africa">Africa</option>
-                <option value="Europe">Europa</option>
-                <option value="Oceania">Oceania</option>
-                <option value="South America">South America</option>
-                <option value="Antarctica">Antartida</option>
-            </select>
-            <select ></select>
-        </div>
+      <Link to="/activities">Crear actividad</Link>
+      <h1>Todos los paises al alcance de tu pantalla</h1>
+      <button onClick={(e) => handleClick(e)}>Recargar Paises</button>
+      <div>
+        <select onChange={handleSort}>
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
+        </select>
+        <select onChange={(e) => handleFilterContinent(e)}>
+          <option value="All">Todos</option>
+          <option value="Asia">Asia</option>
+          <option value="Americas">Americas</option>
+          <option value="Africa">Africa</option>
+          <option value="Europe">Europa</option>
+          <option value="Oceania">Oceania</option>
+          <option value="Antarctic">Antartida</option>
+        </select>
+        <select >
+          <option value="no filter">Tipo de actividad turistica</option>
+          {/* {uniqueActivities.map((activity)=>(
+            <option value={activity} key={activity}>{activity}</option>
+          ))} */}
+        </select>
+        <select>
+          <option value="minmax">De min a max poblacion</option>
+          <option value="maxmin">De max a min poblacion</option>
+        </select>
+        <Paginated
+          countriesPerPage={countriesPerPage}
+          allCountries={allCountries.length}
+          paginated={paginated}
+        />
+        {currentCountries?.map((el) => {
+          return (
+            <Link to={"/home" + el.id}>
+              <Card flags={el.flags} name={el.name} continent={el.continent} />
+            </Link>
+          );
+        })}
+      </div>
     </div>
-)
+  );
 }
