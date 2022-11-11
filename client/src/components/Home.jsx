@@ -10,6 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import Card from "./Card";
 import Paginated from "./Paginated";
+import SearchBar from "./SearchBar";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -90,6 +91,7 @@ export default function Home() {
           allCountries={allCountries.length}
           paginated={paginated}
         />
+        <SearchBar/>
         {currentCountries?.map((el) => {
           return (
             <Link to={"/home" + el.id}>

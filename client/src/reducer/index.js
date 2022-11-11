@@ -1,14 +1,19 @@
 import {
-  FILTER_BY_CONTINENT,
   GET_ALL_COUNTRIES,
+  GET_COUNTRY_NAME,
+  GET_ACTIVITIES,
+  FILTER_BY_CONTINENT,
   FILTER_ACTIVITY,
   ORDER_BY_NAME,
+  CREATE_ACTIVITY,
+  GET_DETAIL
 } from "../actions/index.js";
 
 const initialState = {
   countries: [],
   allCountries: [],
   activities: [],
+  countryDetail: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -18,6 +23,26 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         countries: action.payload,
         allCountries: action.payload,
+      };
+    case GET_COUNTRY_NAME:
+      return {
+        ...state,
+        countries: action.payload,
+      };
+    case GET_ACTIVITIES:
+      return {
+        ...state,
+        activities: action.payload,
+      };
+    case GET_DETAIL:
+      return {
+        ...state,
+        countryDetail: action.payload
+      };
+    case CREATE_ACTIVITY:
+      return {
+        ...state,
+        createActivity: [...state.activities, action.payload],
       };
     case FILTER_BY_CONTINENT:
       const allCountries = state.allCountries;
@@ -30,18 +55,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         countries: continentFiltered,
       };
-    //   case FILTER_ACTIVITY:
-    //     let filter = action.payload === "no filter"? state.allCountries : state.allCountries.filter(country=> {
-    //         const activities = country.activities.map(
-    //             (activity) => activity.name
-    //         )
-    //         console.log(activities)
-    //         return activities.includes(action.payload)
-    //     })
-    //         return{
-    //             ...state,
-    //             countries: filter
-    //         }
+
     case ORDER_BY_NAME:
       const sortedArr =
         action.payload === "asc"
@@ -67,6 +81,18 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         countries: sortedArr,
       };
+//  case FILTER_ACTIVITY:
+    //     let filter = action.payload === "no filter"? state.       allCountries : state.allCountries.filter(country=> {
+    //         const activities = country.activities.map(
+    //             (activity) => activity.name
+    //         )
+    //         console.log(activities)
+    //         return activities.includes(action.payload)
+    //     })
+    //         return{
+    //             ...state,
+    //             countries: filter
+    //         }
     default:
       return {
         ...state,
