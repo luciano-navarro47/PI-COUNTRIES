@@ -6,14 +6,17 @@ import {
   FILTER_ACTIVITY,
   ORDER_BY_NAME,
   CREATE_ACTIVITY,
-  GET_DETAIL
+  GET_DETAIL,
+  SET_CURRENT_PAGE,
+  ORDER_BY_POPULATION,
 } from "../actions/index.js";
 
 const initialState = {
   countries: [],
   allCountries: [],
   activities: [],
-  countryDetail: []
+  countryDetail: [],
+  currentPage: 1,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -37,7 +40,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_DETAIL:
       return {
         ...state,
-        countryDetail: action.payload
+        countryDetail: action.payload,
       };
     case CREATE_ACTIVITY:
       return {
@@ -81,18 +84,52 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         countries: sortedArr,
       };
-//  case FILTER_ACTIVITY:
-    //     let filter = action.payload === "no filter"? state.       allCountries : state.allCountries.filter(country=> {
-    //         const activities = country.activities.map(
-    //             (activity) => activity.name
-    //         )
-    //         console.log(activities)
-    //         return activities.includes(action.payload)
-    //     })
-    //         return{
-    //             ...state,
-    //             countries: filter
-    //         }
+    case FILTER_ACTIVITY:
+      let filter =
+        action.payload === "no filter"
+          ? state.allCountries
+          : state.allCountries.filter((country) => {
+              const activities = country.activities.map(
+                (activity) => activity.name
+              );
+
+              return activities.includes(action.payload);
+            });
+      return {
+        ...state,
+        countries: filter,
+      };
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
+    case ORDER_BY_POPULATION:
+      const sortedArr2 =
+        action.payload === "minmax"
+          ? state.countries.sort(function (a, b) {
+              if (a.population > b.population) {
+                return -1;
+              }
+              if (b.population > a.population) {
+                return 1;
+              }
+              return 0;
+            })
+          : state.countries.sort(function (a, b) {
+              if (a.population > b.population) {
+                return 1;
+              }
+              if (b.population > a.population) {
+                return -1;
+              }
+              return 0;
+            });
+            return{
+              ...state,
+              countries: sortedArr2
+            }
+
     default:
       return {
         ...state,

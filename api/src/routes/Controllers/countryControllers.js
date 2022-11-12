@@ -36,7 +36,7 @@ router.get("/:id", async (req, res) => {
       ? res.status(200).send(filterCountries)
       : res.status(400).send("Country not found by ID");
   } catch (error) {
-    throw new Error(error);
+    console.log(error);
   }
 });
 

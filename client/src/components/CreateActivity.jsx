@@ -95,9 +95,8 @@ export default function CreateActivity() {
         <div>
           <label>Nombre: </label>
           <input type="text" value={input.name} name="name" onChange={(e)=>handleChange(e)}/>
-          {errors.name&&(
-            <p>{errors.name}</p>
-          )}
+          
+          
         </div>
         <div>
           <label>Dificultad: </label>

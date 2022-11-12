@@ -1,21 +1,36 @@
-import React from "react"
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentPage } from "../actions";
 
-export default function Paginated({countriesPerPage, allCountries, paginated}){
-const pageNumbers = []
+export default function Paginated({ countriesPerPage, allCountries, setActive, active}){
+  const pageNumbers = [];
 
-    for(let i = 0 ; i <= Math.ceil(allCountries/countriesPerPage) ; i++){
-        pageNumbers.push(i + 1)
-    }
+  const currentPag = useSelector((state)=> state.currentPage)
+  const dispatch = useDispatch()
 
-    return(
-        <nav>
-            <ul>
-                { pageNumbers?.map((number)=>(
-                    <li key={number}>
-                        <a onClick={()=>paginated(number)}>{number}</a>
-                    </li>
-                ))}
-            </ul>
-        </nav>
-    )
+  function handlerClick(event, number){
+    event.preventDefault()
+    dispatch(setCurrentPage(number))
+    setActive({
+      [event.target.name]: true
+    })
+  }
+
+
+  for (let i = 0; i <= Math.ceil(allCountries / countriesPerPage); i++) {
+    pageNumbers.push(i + 1);
+  }
+  
+
+  return (
+          <ul>
+             {
+             pageNumbers?.map((number) => {
+          return (
+            <a key={number}> <button value={currentPag} onClick={(number) => handlerClick(number)}> {number} </button> </a>
+            )
+          })
+        }
+          </ul>
+  )
 }

@@ -37,7 +37,7 @@ const findCountriesById = (id, countries) => {
     (country) => country.id.toLowerCase() === id.toLowerCase()
   );
   if (!filterCountry) {
-    throw new Error("A country with that id was not found");
+    throw new Error("No se encontró un pais con ese ID");
   }
   return filterCountry;
 };
