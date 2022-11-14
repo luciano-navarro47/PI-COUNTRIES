@@ -2,11 +2,11 @@ import {
   GET_ALL_COUNTRIES,
   GET_COUNTRY_NAME,
   GET_ACTIVITIES,
+  GET_DETAIL,
+  CREATE_ACTIVITY,
   FILTER_BY_CONTINENT,
   FILTER_ACTIVITY,
   ORDER_BY_NAME,
-  CREATE_ACTIVITY,
-  GET_DETAIL,
   SET_CURRENT_PAGE,
   ORDER_BY_POPULATION,
 } from "../actions/index.js";
@@ -16,7 +16,7 @@ const initialState = {
   allCountries: [],
   activities: [],
   countryDetail: [],
-  currentPage: 1,
+  actualPage: 1,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -47,6 +47,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         createActivity: [...state.activities, action.payload],
       };
+
     case FILTER_BY_CONTINENT:
       const allCountries = state.allCountries;
       const continentFiltered =
@@ -58,7 +59,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         countries: continentFiltered,
       };
-
     case ORDER_BY_NAME:
       const sortedArr =
         action.payload === "asc"
@@ -84,6 +84,31 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         countries: sortedArr,
       };
+    case ORDER_BY_POPULATION:
+        const sortedArr2 =
+          action.payload === "maxmin"
+            ? state.countries.sort(function (a, b) {
+                if (a.population > b.population) {
+                  return -1;
+                }
+                if (b.population > a.population) {
+                  return 1;
+                }
+                return 0;
+              })
+            : state.countries.sort(function (a, b) {
+                if (a.population > b.population) {
+                  return 1;
+                }
+                if (b.population > a.population) {
+                  return -1;
+                }
+                return 0;
+              });
+        return {
+          ...state,
+          countries: sortedArr2,
+        };
     case FILTER_ACTIVITY:
       let filter =
         action.payload === "no filter"
@@ -102,33 +127,8 @@ const rootReducer = (state = initialState, action) => {
     case SET_CURRENT_PAGE:
       return {
         ...state,
-        currentPage: action.payload,
+        actualPage: action.payload,
       };
-    case ORDER_BY_POPULATION:
-      const sortedArr2 =
-        action.payload === "minmax"
-          ? state.countries.sort(function (a, b) {
-              if (a.population > b.population) {
-                return -1;
-              }
-              if (b.population > a.population) {
-                return 1;
-              }
-              return 0;
-            })
-          : state.countries.sort(function (a, b) {
-              if (a.population > b.population) {
-                return 1;
-              }
-              if (b.population > a.population) {
-                return -1;
-              }
-              return 0;
-            });
-            return{
-              ...state,
-              countries: sortedArr2
-            }
 
     default:
       return {

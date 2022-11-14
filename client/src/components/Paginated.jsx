@@ -5,7 +5,7 @@ import { setCurrentPage } from "../actions";
 export default function Paginated({ countriesPerPage, allCountries, setActive, active}){
   const pageNumbers = [];
 
-  const currentPag = useSelector((state)=> state.currentPage)
+  const currentPage = useSelector((state)=> state.actualPage)
   const dispatch = useDispatch()
 
   function handlerClick(event, number){
@@ -27,7 +27,7 @@ export default function Paginated({ countriesPerPage, allCountries, setActive, a
              {
              pageNumbers?.map((number) => {
           return (
-            <a key={number}> <button value={currentPag} onClick={(number) => handlerClick(number)}> {number} </button> </a>
+            <a key={number}> <button value={currentPage} onClick={(number) => handlerClick(number)}> {number} </button> </a>
             )
           })
         }
