@@ -53,7 +53,7 @@ const rootReducer = (state = initialState, action) => {
       const continentFiltered =
         action.payload === "All"
           ? allCountries
-          : allCountries.filter((el) => el.continent === action.payload);
+          : state.countries.filter((el) => el.continent === action.payload);
       console.log(continentFiltered);
       return {
         ...state,
@@ -61,8 +61,9 @@ const rootReducer = (state = initialState, action) => {
       };
     case ORDER_BY_NAME:
       const sortedArr =
+        action.payload === "default"? state.allCountries:
         action.payload === "asc"
-          ? state.countries.sort(function (a, b) {
+          ? state.countries.map((e)=> e).sort(function (a, b) {
               if (a.name > b.name) {
                 return 1;
               }
@@ -71,7 +72,7 @@ const rootReducer = (state = initialState, action) => {
               }
               return 0;
             })
-          : state.countries.sort(function (a, b) {
+          : state.countries.map((e)=> e).sort(function (a, b) {
               if (a.name > b.name) {
                 return -1;
               }

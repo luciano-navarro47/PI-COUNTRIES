@@ -7,8 +7,8 @@ import {
   filterCountriesByContinent,
   orderByName,
   orderByPopulation,
-} from "../actions";
-import { setCurrentPage } from "../actions";
+} from "../../actions";
+import { setCurrentPage } from "../../actions";
 
 export default function Filter({ setOrder, handler }) {
 
@@ -58,6 +58,7 @@ export default function Filter({ setOrder, handler }) {
   return (
     <div>
       <select onChange={(e) => handleSort(e)}>
+        <option value="default">Order</option>
         <option value="asc">A-Z</option>
         <option value="desc">Z-A</option>
       </select>

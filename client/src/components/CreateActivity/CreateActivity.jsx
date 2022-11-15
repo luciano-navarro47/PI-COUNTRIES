@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { getActivities, getAllCountries, createActivity } from "../actions/index";
+import { getActivities, getAllCountries, createActivity } from "../../actions/index";
 import { useDispatch, useSelector } from "react-redux";
 
 

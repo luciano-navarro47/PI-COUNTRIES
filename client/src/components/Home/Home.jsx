@@ -2,10 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Paginated from "./Paginated";
-import SearchBar from "./SearchBar";
-import Filter from "./Filter";
-import Cards from "./Cards";
+import Paginated from "../Paginated/Paginated";
+import SearchBar from "../SearchBar/SearchBar";
+import Filter from "../Filter/Filter"
+import Cards from "../Cards/Cards";
 
 export default function Home() {
 
@@ -13,15 +13,15 @@ export default function Home() {
   const allCountries = useSelector((state) => state.countries);
 
   const [order, setOrder] = useState("");
-  const [countriesPerPage, setCountriesPerPage] = useState(9.99);
+  const [countriesPerPage, setCountriesPerPage] = useState(9);
   const [active, setActive] = useState({ [currentPage]: true })
 
-  const indexOfLastCountry = currentPage * countriesPerPage;
+  const indexOfLastCountry = currentPage  * countriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-  const currentCountries = currentPage===1?allCountries.slice(0,9):currentPage===26?
-  allCountries.slice(249, allCountries.length):allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
+  const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
 
   const numPage = Math.ceil(allCountries.length/countriesPerPage)
+
 
   function handler(data){
     setActive(data)
@@ -34,7 +34,7 @@ export default function Home() {
       <div><SearchBar/></div>
       <Filter
         active={active}
-        numPage={numPage}
+        numPage={numPage -1}
         handler={handler}
         setOrder={setOrder}
       />
@@ -42,7 +42,7 @@ export default function Home() {
         countriesPerPage={countriesPerPage}
         allCountries={allCountries.length}
         currentPage={currentPage}
-        numPage={numPage}
+        numPage={numPage -1}
         setActive={setActive}
         active={active}
       />

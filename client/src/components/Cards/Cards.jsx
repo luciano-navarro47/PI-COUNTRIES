@@ -1,8 +1,8 @@
 import React from "react";
-import Card from "./Card"
+import Card from "../Card/Card"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getAllCountries } from "../actions";
+import { getAllCountries } from "../../actions";
 
 export default function Cards({ currentCountries }) {
   const dispatch = useDispatch();
