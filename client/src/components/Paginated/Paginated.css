@@ -1,0 +1,43 @@
+.conteinerPagi{
+    background-image: none;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.button{
+ margin: 0;
+ padding: 0;
+ font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;   
+ text-decoration: none;
+ border: none;
+
+}
+
+.paginacion{
+    background-color: whitesmoke;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    width: 1100px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.paginacion a{
+    width: 80px;
+    height: 79px;
+    line-height: 80px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.652);
+    font-size: 17px;
+    font-weight: 550;
+    transition: .2s linear;
+}
+
+.paginacion a:hover{
+    background-color: rgba(255, 68, 0, 0.626);
+    color: white;
+}

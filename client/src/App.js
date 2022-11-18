@@ -1,6 +1,6 @@
 import './App.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-import  LandingPage  from "./components/LandingPage/LandingPage"
+import  LandingPage  from "./components/LandingPage/Landing"
 import  Home from "./components/Home/Home"
 import CreateActivity from "./components/CreateActivity/CreateActivity"
 import CountryDetail from "./components/CountryDetail/CountryDetail"

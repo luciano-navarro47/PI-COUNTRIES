@@ -1,0 +1,30 @@
+.backGround{
+    background: url("./3803235.webp");
+    background-position-y: -90px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario{
+    
+    background-color: white;
+    margin: 0 auto;
+    width: 500px;
+    padding: 10px;
+    color: rgb(121, 121, 121);
+    border-radius: 6px;
+}
+
+input, textarea{
+    border: 0;
+}
+
+.field{
+    border: solid 1px #ccc;
+}

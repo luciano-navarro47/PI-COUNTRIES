@@ -53,63 +53,67 @@ const rootReducer = (state = initialState, action) => {
       const continentFiltered =
         action.payload === "All"
           ? allCountries
-          : state.countries.filter((el) => el.continent === action.payload);
-      console.log(continentFiltered);
+          : state.allCountries.filter((el) => el.continent === action.payload);
       return {
         ...state,
-        countries: continentFiltered,
+        countries: continentFiltered
       };
     case ORDER_BY_NAME:
       const sortedArr =
-        action.payload === "default"? state.allCountries:
-        action.payload === "asc"
-          ? state.countries.map((e)=> e).sort(function (a, b) {
-              if (a.name > b.name) {
-                return 1;
-              }
-              if (b.name > a.name) {
-                return -1;
-              }
-              return 0;
-            })
-          : state.countries.map((e)=> e).sort(function (a, b) {
-              if (a.name > b.name) {
-                return -1;
-              }
-              if (b.name > a.name) {
-                return 1;
-              }
-              return 0;
-            });
+        action.payload === "default"
+          ? state.allCountries
+          : action.payload === "asc"
+          ? state.countries
+              .map((e) => e)
+              .sort(function (a, b) {
+                if (a.name > b.name) {
+                  return 1;
+                }
+                if (b.name > a.name) {
+                  return -1;
+                }
+                return 0;
+              })
+          : state.countries
+              .map((e) => e)
+              .sort(function (a, b) {
+                if (a.name > b.name) {
+                  return -1;
+                }
+                if (b.name > a.name) {
+                  return 1;
+                }
+                return 0;
+              });
       return {
         ...state,
         countries: sortedArr,
       };
     case ORDER_BY_POPULATION:
-        const sortedArr2 =
-          action.payload === "maxmin"
-            ? state.countries.sort(function (a, b) {
-                if (a.population > b.population) {
-                  return -1;
-                }
-                if (b.population > a.population) {
-                  return 1;
-                }
-                return 0;
-              })
-            : state.countries.sort(function (a, b) {
-                if (a.population > b.population) {
-                  return 1;
-                }
-                if (b.population > a.population) {
-                  return -1;
-                }
-                return 0;
-              });
-        return {
-          ...state,
-          countries: sortedArr2,
-        };
+      const sortedArr2 =
+        action.payload === "maxmin"
+          ? state.countries.sort(function (a, b) {
+              if (a.population > b.population) {
+                return -1;
+              }
+              if (b.population > a.population) {
+                return 1;
+              }
+              return 0;
+            })
+          : state.countries.sort(function (a, b) {
+              if (a.population > b.population) {
+                return 1;
+              }
+              if (b.population > a.population) {
+                return -1;
+              }
+              return 0;
+            });
+      return {
+        ...state,
+        allCountries: sortedArr2,
+      };
     case FILTER_ACTIVITY:
       let filter =
         action.payload === "no filter"
@@ -118,6 +122,7 @@ const rootReducer = (state = initialState, action) => {
               const activities = country.activities.map(
                 (activity) => activity.name
               );
+              // console.log(activities.includes(action.payload))
 
               return activities.includes(action.payload);
             });

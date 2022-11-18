@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { getActivities, getAllCountries, createActivity } from "../../actions/index";
 import { useDispatch, useSelector } from "react-redux";
+import "./CreateActivity.css"
 
 
 
@@ -11,13 +12,13 @@ export default function CreateActivity() {
     let errors = {}
 
     if(!input.name){
-      errors.name = "Se requiere el nombre de la actividad"
-    }else if(!input.duration || input.duration === 0){
-      errors.duration = "Ingresá la duración de la actividad"
+      errors.name = "Activity name required"
+    }else if(!input.duration || input.duration === 0 || input.duration === Number("")){
+      errors.duration = "Activity duration required"
     }else if(!input.season){
-      errors.season = "Ingresá la temporada en la que se realiza dicha actividad"
+      errors.season = "Season of the required activity"
     }else if(!input.difficulty){
-      errors.difficulty = "Ingresá el grado de dificultad que debería tener"
+      errors.difficulty = "Degree of difficulty required"
     }
     return errors;
 }
@@ -38,8 +39,6 @@ export default function CreateActivity() {
 
   useEffect(() => {
     dispatch(getActivities());
-  }, [dispatch]);
-  useEffect(() => {
     dispatch(getAllCountries());
   }, [dispatch]);
 
@@ -66,7 +65,7 @@ export default function CreateActivity() {
     e.preventDefault()
     console.log(input)
     dispatch(createActivity(input))
-    alert("¡Actividad creada con éxito!")
+    alert("¡Activity created successfully!")
     setInput({
     name: "",
     difficulty: 0,
@@ -86,38 +85,37 @@ export default function CreateActivity() {
   }
 
   return (
-    <div>
+    <div className="backGround">
+      <div className="formulario">
       <Link to="/home">
-        <button>Volver</button>
+        <button>Back Home</button>
       </Link>
-      <h1>Creá una actividad!</h1>
+      <h1>¡Create an activity!</h1>
       <form onSubmit={(e)=>handleSubmit(e)}>
-        <div>
-          <label>Nombre: </label>
-          <input type="text" value={input.name} name="name" onChange={(e)=>handleChange(e)}/>
-          
-          
+        <div >
+          <p>Name: </p>
+          <input class="field" type="text" value={input.name} name="name" onChange={(e)=>handleChange(e)}/>
         </div>
         <div>
-          <label>Dificultad: </label>
-          <label><input type="radio" value="1" name="difficulty" onChange={(e)=>handleChange(e)}/></label>
-          <label><input type="radio" value="2" name="difficulty" onChange={(e)=>handleChange(e)}/></label>
-          <label><input type="radio" value="3" name="difficulty" onChange={(e)=>handleChange(e)}/></label>
-          <label><input type="radio" value="4" name="difficulty" onChange={(e)=>handleChange(e)}/></label>
-          <label><input type="radio" value="5" name="difficulty" onChange={(e)=>handleChange(e)}/></label>
+        <p>Difficulty: </p>
+          <label>1<input class="field" type="radio" value="1" name="difficulty" onChange={(e)=>handleChange(e)}/></label>
+          <label>2<input class="field" type="radio" value="2" name="difficulty" onChange={(e)=>handleChange(e)}/></label>
+          <label>3<input class="field" type="radio" value="3" name="difficulty" onChange={(e)=>handleChange(e)}/></label>
+          <label>4<input class="field" type="radio" value="4" name="difficulty" onChange={(e)=>handleChange(e)}/></label>
+          <label>5<input class="field" type="radio" value="5" name="difficulty" onChange={(e)=>handleChange(e)}/></label>
           {errors.name&&(
             <p>{errors.name}</p>
           )}
         </div>
         <div>
-          <label>Duración: </label>
-          <input type="number" value={input.duration} name="duration" onChange={(e)=>handleChange(e)}/>
+          <p>Duration: </p>
+          <input className="field" type="number" value={input.duration} name="duration" onChange={(e)=>handleChange(e)}/>
           {errors.name&&(
             <p>{errors.name}</p>
           )}
         </div>
         <div>
-          <label>Temporadas: </label>
+          <p>Seasons: </p>
           <label><input type="radio" value="Summer" name="season" onChange={(e)=>handleChange(e)}/>Summer</label>
           <label><input type="radio" value="Autumn" name="season" onChange={(e)=>handleChange(e)}/>Autumn</label>
           <label><input type="radio" value="Winter" name="season" onChange={(e)=>handleChange(e)}/>Winter</label>
@@ -127,13 +125,15 @@ export default function CreateActivity() {
           )}
         </div>
         <div>
-          <label>Paises: </label>
+          <p>Countries: </p>
           <select name="" id="" onChange={(e)=>handleSelectCountry(e)}>
             {allCountries.map((country)=>(
               <option value={country.name}>{country.name}</option>))}
           </select>
-          <ul><li>{input.countries.map(el => el + ", ")}</li></ul>
-          <button type="submit">Terminar de crear</button>
+          {input.countries.map(el => el + ", ")}
+        </div>
+        <div>
+          <button type="submit"> Finish creating! </button>
         </div>
       </form>
       {input.countries.map((country)=>
@@ -141,7 +141,10 @@ export default function CreateActivity() {
           <p>{country}</p>
           <button onClick={()=> handleDelete(country)}>x</button>
         </div>
+        
+        
       )}
+    </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Card from "../Card/Card"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getAllCountries } from "../../actions";
+import "./Cards.css"
 
 export default function Cards({ currentCountries }) {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ export default function Cards({ currentCountries }) {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="conteinerCards">
       {currentCountries.length? currentCountries?.map((country) => {
             return(
               <Card
@@ -24,6 +25,7 @@ export default function Cards({ currentCountries }) {
               />)
           })
         : "hola"}
+     
     </div>
   )
 }

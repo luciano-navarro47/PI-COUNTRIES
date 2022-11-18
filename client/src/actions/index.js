@@ -47,7 +47,9 @@ export function getNameCountry(input) {
 
 export function getActivities() {
   return async function (dispatch) {
+    
     const info = await axios.get("http://localhost:3001/activities");
+
     return dispatch({
       type: GET_ACTIVITIES,
       payload: info.data,
@@ -92,8 +94,8 @@ export function filterActivity(payload) {
 }
 
 export function setCurrentPage(payload) {
-  return {
-    type: SET_CURRENT_PAGE,
+return {
+  type: SET_CURRENT_PAGE,
     payload,
   };
 }

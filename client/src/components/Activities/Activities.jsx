@@ -2,7 +2,6 @@ import React from "react";
 import { getAllActivities } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react"
-import { Link } from "react-router-dom";
 
 export default function GetActivities(){
 

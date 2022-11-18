@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getNameCountry } from "../../actions";
 import { setCurrentPage } from "../../actions";
+import "./SearchBar.css"
 
 
 export default function SearchBar() {
@@ -21,14 +22,21 @@ export default function SearchBar() {
     dispatch(setCurrentPage(1))
   }
 
+  const refreshPage = ()=>{
+    window.location.reload();
+ }
+
   return (
-    <div>
-      <input
+    <div className="search-box">
+
+      <input 
+        className="search-input"
         type="text"
-        placeholder="Search country..."
+        placeholder="Search a country..."
         onChange={(e) => handleInputChange(e)}
       />
-      <button type="submit" onClick={(e)=> handleSubmit(e)}>Search</button>
+      <button type="submit" onClick={(e)=> handleSubmit(e)} className="search-button">Search</button>
+      <button type="submit" onClick={refreshPage} className="search-button2">REFRESH</button>
     </div>
   );
 }

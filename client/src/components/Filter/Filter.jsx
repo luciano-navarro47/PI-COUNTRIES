@@ -10,7 +10,7 @@ import {
 } from "../../actions";
 import { setCurrentPage } from "../../actions";
 
-export default function Filter({ setOrder, handler }) {
+export default function Filter({ setOrden, handler }) {
 
   const dispatch = useDispatch();
 
@@ -20,22 +20,22 @@ export default function Filter({ setOrder, handler }) {
     return mapActivities.indexOf(item === index);
   });
 
-  useEffect(() => {
-    dispatch(getActivities());
-  }, [dispatch]);
+ ;
 
   function handleSelect(e) {
     e.preventDefault();
     dispatch(filterActivity(e.target.value));
-    setOrder(e.target.value);
-    handler({1:true})
+    // handler({1:true})
+    // // console.log(handler({1:true}))
+    // setOrden(`orden ${e.target.value}`);
+    // console.log(setOrden(e.target.value))
   }
 
   function handleFilterContinent(e) {
     dispatch(filterCountriesByContinent(e.target.value));
     dispatch(setCurrentPage(1));
-    setOrder(e.target.value);
-    handler({1:true})
+    // handler({1:true})
+    // setOrden(e.target.value);
    
   }
 
@@ -43,22 +43,27 @@ export default function Filter({ setOrder, handler }) {
     e.preventDefault();
     dispatch(orderByName(e.target.value));
     dispatch(setCurrentPage(1));
-    handler({1:true})
-    setOrder(`Order ${e.target.value}`);
+    // handler({1:true})
+    // setOrden(`Order ${e.target.value}`);
   }
 
   function handleSortPopulation(e) {
     e.preventDefault();
     dispatch(orderByPopulation(e.target.value));
     dispatch(setCurrentPage(1))
-    handler({1:true})
-    setOrder(`Order ${e.target.value}`);
+    // handler({1:true})
+    setOrden(`Order ${e.target.value}`);
+ 
   }
+
+  useEffect(() => {
+    dispatch(getActivities());
+  }, [dispatch])
 
   return (
     <div>
       <select onChange={(e) => handleSort(e)}>
-        <option value="default">Order</option>
+        <option value="default">General order</option>
         <option value="asc">A-Z</option>
         <option value="desc">Z-A</option>
       </select>
@@ -79,7 +84,9 @@ export default function Filter({ setOrder, handler }) {
           <option value={activity} key={activity}>
             {activity}
           </option>
-        ))}
+        )) 
+        }
+        
       </select>
 
       <select onChange={(e) => handleSortPopulation(e)}>

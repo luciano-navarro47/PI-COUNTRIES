@@ -4,53 +4,72 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Paginated from "../Paginated/Paginated";
 import SearchBar from "../SearchBar/SearchBar";
-import Filter from "../Filter/Filter"
+import Filter from "../Filter/Filter";
 import Cards from "../Cards/Cards";
+import { getAllCountries } from "../../actions";
+import "./Home.css";
 
 export default function Home() {
-
-  const currentPage = useSelector((state)=> state.actualPage)
+  const dispatch = useDispatch();
+  //3
+  const currentPage = useSelector((state) => state.actualPage);
   const allCountries = useSelector((state) => state.countries);
+  // console.log(allCountries.length);
+  //{argentina}, {ecuador}, {peru}, {etc}...
 
-  const [order, setOrder] = useState("");
   const [countriesPerPage, setCountriesPerPage] = useState(9);
-  const [active, setActive] = useState({ [currentPage]: true })
-
-  const indexOfLastCountry = currentPage  * countriesPerPage;
+  const [orden, setOrden] = useState("");
+  const [active, setActive] = useState({ [currentPage]: true });
+  //3         //9.99
+  const indexOfLastCountry = currentPage * countriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-  const currentCountries = allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
+  //3   27 al 36
+  const currentCountries =
+    currentPage === 1 ? allCountries.slice(0, 9) : currentPage === 28 ? 
+    allCountries.slice(indexOfFirstCountry, allCountries.length) 
+      : allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
 
-  const numPage = Math.ceil(allCountries.length/countriesPerPage)
+  const numPage = Math.ceil(allCountries.length / countriesPerPage);
+  // console.log(numPage)
 
+  useEffect(() => {
+    dispatch(getAllCountries());
+  }, [dispatch]);
 
   function handler(data){
     setActive(data)
   }
 
   return (
-    <div>
-      <Link to="/activities">♥Create Activity♥</Link>
-      <h1>¡All countries within reach of your screen!</h1>
-      <div><SearchBar/></div>
+    <div className="conteinerHome">
+      <h2>
+        <Link to="/activities">♥Create Activity♥</Link>
+      </h2>
+      <div className="title">
+        <h1>¡All countries within reach of your screen!</h1>
+      </div>
+      <div>
+        <SearchBar />
+      </div>
       <Filter
-        active={active}
-        numPage={numPage -1}
-        handler={handler}
-        setOrder={setOrder}
+      active={active}
+      numPage={numPage - 1}
+      handler={handler}
+      setOrden={setOrden}
       />
+      <hr />
       <Paginated
         countriesPerPage={countriesPerPage}
         allCountries={allCountries.length}
         currentPage={currentPage}
-        numPage={numPage -1}
-        setActive={setActive}
+        
         active={active}
+        setActive={setActive}
       />
-     <hr></hr>
-     <div>
-      <Cards
-      currentCountries={currentCountries}/>
-     </div>
+      <hr></hr>
+      <div>
+        <Cards currentCountries={currentCountries} />
+      </div>
     </div>
   );
 }
