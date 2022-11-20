@@ -28,14 +28,13 @@ export default function SearchBar() {
 
   return (
     <div className="search-box">
-
       <input 
         className="search-input"
         type="text"
         placeholder="Search a country..."
         onChange={(e) => handleInputChange(e)}
       />
-      <button type="submit" onClick={(e)=> handleSubmit(e)} className="search-button">Search</button>
+      <button type="submit" onClick={(e)=> handleSubmit(e)} className="search-button">GO THERE!</button>
       <button type="submit" onClick={refreshPage} className="search-button2">REFRESH</button>
     </div>
   );

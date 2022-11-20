@@ -13,7 +13,6 @@ import { setCurrentPage } from "../../actions";
 export default function Filter({ setOrden, handler }) {
 
   const dispatch = useDispatch();
-
   const allActivities = useSelector((state) => state.activities);
   const mapActivities = allActivities.map((element) => element.name);
   const uniqueActivities = mapActivities.filter((item, index) => {
@@ -25,8 +24,8 @@ export default function Filter({ setOrden, handler }) {
   function handleSelect(e) {
     e.preventDefault();
     dispatch(filterActivity(e.target.value));
-    // handler({1:true})
-    // // console.log(handler({1:true}))
+    handler({1:true})
+    // console.log(handler({1:true}))
     // setOrden(`orden ${e.target.value}`);
     // console.log(setOrden(e.target.value))
   }
@@ -34,7 +33,7 @@ export default function Filter({ setOrden, handler }) {
   function handleFilterContinent(e) {
     dispatch(filterCountriesByContinent(e.target.value));
     dispatch(setCurrentPage(1));
-    // handler({1:true})
+    handler({1:true})
     // setOrden(e.target.value);
    
   }
@@ -43,7 +42,7 @@ export default function Filter({ setOrden, handler }) {
     e.preventDefault();
     dispatch(orderByName(e.target.value));
     dispatch(setCurrentPage(1));
-    // handler({1:true})
+    handler({1:true})
     // setOrden(`Order ${e.target.value}`);
   }
 
@@ -51,8 +50,8 @@ export default function Filter({ setOrden, handler }) {
     e.preventDefault();
     dispatch(orderByPopulation(e.target.value));
     dispatch(setCurrentPage(1))
-    // handler({1:true})
-    setOrden(`Order ${e.target.value}`);
+    handler({1:true})
+    // setOrden(`Order ${e.target.value}`);
  
   }
 

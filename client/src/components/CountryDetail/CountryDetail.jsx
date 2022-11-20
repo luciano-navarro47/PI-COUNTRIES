@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getCountryDetail } from "../../actions/index.js";
 import { useEffect } from "react";
+import "./CountryDetail.css"
 
 export default function CountryDetail(props) {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export default function CountryDetail(props) {
   return (
     <div>
       {
-        <div>
+        <div className="counDetail">
           <Link to="/home">
             <button>Back</button>
           </Link>

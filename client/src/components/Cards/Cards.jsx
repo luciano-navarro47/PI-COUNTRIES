@@ -13,8 +13,9 @@ export default function Cards({ currentCountries }) {
   }, [dispatch]);
 
   return (
-    <div className="conteinerCards">
-      {currentCountries.length? currentCountries?.map((country) => {
+    
+    <div className="paises">
+      {currentCountries.length? currentCountries.map((country) => {
             return(
               <Card
               key={country.id}
@@ -24,8 +25,8 @@ export default function Cards({ currentCountries }) {
               continent={country.continent}
               />)
           })
-        : "hola"}
-     
+        : "That country does not exists"}
+  
     </div>
   )
 }

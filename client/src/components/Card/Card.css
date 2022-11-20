@@ -1,11 +1,12 @@
 .flag{
-    width: 90px;
+    display: grid;
+    width: 85px;
     height: 60px;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
     border-radius: 5px;
-    padding: 1px;
-    border: solid 2px black;
+    padding: 2px;
+    border: solid 0px rgb(10, 10, 10);
     transition: all ease 300ms;
     box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
     -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
@@ -13,6 +14,17 @@
     
 }
 
-.h3{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.flag:hover{
+    transform: scale(1.1);
+}
+
+.card{
+    background-color: rgba(197, 170, 37, 0.58);
+    
+    width: 200px;
+    height: 160px;
+    align-items: center;
+    justify-content: center;
+    ;
+    border-radius: 5px;
 }

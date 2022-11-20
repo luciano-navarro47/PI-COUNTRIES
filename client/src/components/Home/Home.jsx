@@ -8,6 +8,7 @@ import Filter from "../Filter/Filter";
 import Cards from "../Cards/Cards";
 import { getAllCountries } from "../../actions";
 import "./Home.css";
+import "../Cards/Cards.css"
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -42,18 +43,21 @@ export default function Home() {
 
   return (
     <div className="conteinerHome">
-      <h2>
-        <Link to="/activities">♥Create Activity♥</Link>
-      </h2>
-      <div className="title">
+      <div className="container2">
         <h1>¡All countries within reach of your screen!</h1>
+      
       </div>
-      <div>
+      <div className="containerButton">
+      <button className="buttonCreate"><Link to="/activities">♥Create Activity♥</Link>
+          </button>
+      </div>
+      <div >
         <SearchBar />
       </div>
+      .
       <Filter
       active={active}
-      numPage={numPage - 1}
+      // numPage={numPage - 1}
       handler={handler}
       setOrden={setOrden}
       />
@@ -65,11 +69,14 @@ export default function Home() {
         
         active={active}
         setActive={setActive}
+        
       />
       <hr></hr>
-      <div>
+      <div className="containerCountry">
         <Cards currentCountries={currentCountries} />
+      
       </div>
+      
     </div>
   );
 }
