@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import style from "./Paginated.module.css"
-import { setCurrentPage } from "../../actions";
+import { setCurrentPage } from "../../redux/actions";
 
 export default function Paginated({ countriesPerPage, allCountries, setActive, active}) {
   const pageNumbers = [];

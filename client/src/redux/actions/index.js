@@ -64,7 +64,7 @@ export function createActivity(payload) {
         "http://localhost:3001/activities",
         payload
       );
-      console.log(json);
+      console.log(json)
       return dispatch({ type: CREATE_ACTIVITY, payload: payload });
     } catch (error) {
       console.log(error);
@@ -79,6 +79,13 @@ export function filterCountriesByContinent(payload) {
   };
 }
 
+export function filterActivity(payload) {
+  return {
+    type: FILTER_ACTIVITY,
+    payload,
+  };
+}
+
 export function orderByName(payload) {
   return {
     type: ORDER_BY_NAME,
@@ -86,9 +93,9 @@ export function orderByName(payload) {
   };
 }
 
-export function filterActivity(payload) {
+export function orderByPopulation(payload) {
   return {
-    type: FILTER_ACTIVITY,
+    type: ORDER_BY_POPULATION,
     payload,
   };
 }
@@ -100,9 +107,3 @@ return {
   };
 }
 
-export function orderByPopulation(payload) {
-  return {
-    type: ORDER_BY_POPULATION,
-    payload,
-  };
-}

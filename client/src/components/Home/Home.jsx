@@ -6,32 +6,30 @@ import Paginated from "../Paginated/Paginated";
 import SearchBar from "../SearchBar/SearchBar";
 import Filter from "../Filter/Filter";
 import Cards from "../Cards/Cards";
-import { getAllCountries } from "../../actions";
+import { getAllCountries } from "../../redux/actions";
 import "./Home.css";
 import "../Cards/Cards.css"
 
 export default function Home() {
   const dispatch = useDispatch();
-  //3
+
   const currentPage = useSelector((state) => state.actualPage);
   const allCountries = useSelector((state) => state.countries);
-  // console.log(allCountries.length);
-  //{argentina}, {ecuador}, {peru}, {etc}...
+
 
   const [countriesPerPage, setCountriesPerPage] = useState(9);
-  const [orden, setOrden] = useState("");
+
   const [active, setActive] = useState({ [currentPage]: true });
-  //3         //9.99
+
   const indexOfLastCountry = currentPage * countriesPerPage;
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
-  //3   27 al 36
+
   const currentCountries =
     currentPage === 1 ? allCountries.slice(0, 9) : currentPage === 28 ? 
     allCountries.slice(indexOfFirstCountry, allCountries.length) 
       : allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
 
-  const numPage = Math.ceil(allCountries.length / countriesPerPage);
-  // console.log(numPage)
+
 
   useEffect(() => {
     dispatch(getAllCountries());
@@ -56,24 +54,19 @@ export default function Home() {
       </div>
       .
       <Filter
-      active={active}
-      // numPage={numPage - 1}
       handler={handler}
-      setOrden={setOrden}
       />
       <hr />
       <Paginated
         countriesPerPage={countriesPerPage}
         allCountries={allCountries.length}
-        currentPage={currentPage}
-        
         active={active}
         setActive={setActive}
         
       />
       <hr></hr>
       <div className="containerCountry">
-        <Cards currentCountries={currentCountries} />
+        <Cards currentCountries={currentCountries}/>
       
       </div>
       

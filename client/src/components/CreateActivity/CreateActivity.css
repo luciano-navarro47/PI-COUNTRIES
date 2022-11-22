@@ -12,19 +12,178 @@
 }
 
 .formulario{
-    
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.829);
     margin: 0 auto;
-    width: 500px;
+    width: 550px;
+    height: 710px;
     padding: 10px;
-    color: rgb(121, 121, 121);
+    color: rgb(109, 98, 98);
     border-radius: 6px;
+    border: 2px solid rgba(255, 68, 0, 0.527);
+    margin-top: 50px;
+    font-weight: 650;
 }
 
-input, textarea{
-    border: 0;
-}
 
 .field{
-    border: solid 1px #ccc;
+    border: solid 2px rgba(247, 177, 177, 0.836);
+}
+
+.pes p {
+    background-color: rgba(255, 0, 0, 0.199);
+    width: 120px;
+    justify-content: center;
+    margin-left: 185px;
+    margin-top: 35px;
+    
+}
+
+.pes{
+    background-color: rgba(0, 255, 255, 0.082);
+    border-radius: 10px;
+    width: 100%;
+}
+
+.button-8 {
+    background-color: #e1ecf4;
+    border-radius: 3px;
+    border: 1px solid #7aa7c7;
+    box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #39739d;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin-top: 60px;
+    outline: none;
+    padding: 8px .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+  }
+  
+  .button-8:hover,
+  .button-8:focus {
+    background-color: #b3d3ea;
+    color: #2c5777;
+  }
+  
+  .button-8:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+  }
+  
+  .button-8:active {
+    background-color: #a0c7e4;
+    box-shadow: none;
+    color: #2c5777;
+  }
+
+
+/* CSS */
+.button-49,
+.button-49:after {
+  width: 150px;
+  height: 76px;
+  line-height: 78px;
+  font-size: 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
+  border: 0;
+  color: #fff;
+  letter-spacing: 3px;
+  box-shadow: 6px 0px 0px #00E6F6;
+  outline: transparent;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-49:after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+  
+  content: 'countries';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
+  text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+  clip-path: var(--slice-0);
+}
+
+.button-49:hover:after {
+  animation: 1s glitch;
+  animation-timing-function: steps(2, end);
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(-20px, -10px);
+  }
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(10px, 10px);
+  }
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 10px);
+  }
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0px, 5px);
+  }
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-5px, 0px);
+  }
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(5px, 0px);
+  }
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(5px, 10px);
+  }
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-10px, 10px);
+  }
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(20px, -10px);
+  }
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-10px, 0px);
+  }
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .button-49,
+  .button-49:after {
+    width: 143px;
+    height: 45px;
+    line-height: 45px;
+  }
 }

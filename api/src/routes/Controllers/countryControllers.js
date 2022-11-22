@@ -1,10 +1,8 @@
 const { Router } = require("express");
 const {
-  countriesToDb,
   findCountriesById,
   findCountry,
 } = require("./controllers.js");
-const { Country, Activities } = require("../../db.js");
 
 const router = Router();
 
@@ -39,5 +37,29 @@ router.get("/:id", async (req, res) => {
     console.log(error);
   }
 });
+
+
+
+
+// router.get("/dbCountries", async (req, res) => {
+//   const countries = await Country.findAll();
+//   if (countries) {
+//     res.status(201).send(countries);
+//   }
+//   res.status(400).send("Countries does not exists");
+// });
+
+// router.get("/filterByContinent", async (req, res) => {
+//   const { continent } = req.query;
+//   const allCountries = await Country.findAll({
+//     where: {
+//       continent: continent,
+//     },
+//   });
+//   if (!allCountries) {
+//     res.status(400).send("Not continent");
+//   }
+//   res.status(201).send(allCountries);
+// });
 
 module.exports = router;

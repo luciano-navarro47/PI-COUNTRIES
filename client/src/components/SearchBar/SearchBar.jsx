@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getNameCountry } from "../../actions";
-import { setCurrentPage } from "../../actions";
+import { getNameCountry, setCurrentPage} from "../../redux/actions";
+
 import "./SearchBar.css"
 
 

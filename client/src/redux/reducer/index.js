@@ -58,6 +58,22 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         countries: continentFiltered
       };
+    case FILTER_ACTIVITY:
+        let filter =
+          action.payload === "no filter"
+            ? state.allCountries
+            : state.allCountries.filter((country) => {
+                const activities = country.activities.map(
+                  (activity) => activity.name
+                );
+                // console.log(activities.includes(action.payload))
+  
+                return activities.includes(action.payload);
+              });
+        return {
+          ...state,
+          countries: filter,
+        };
     case ORDER_BY_NAME:
       const sortedArr =
         action.payload === "default"
@@ -92,7 +108,7 @@ const rootReducer = (state = initialState, action) => {
     case ORDER_BY_POPULATION:
       const sortedArr2 =
         action.payload === "maxmin"
-          ? state.countries.sort(function (a, b) {
+          ? state.countries.map((e)=> e).sort(function (a, b) {
               if (a.population > b.population) {
                 return -1;
               }
@@ -101,7 +117,7 @@ const rootReducer = (state = initialState, action) => {
               }
               return 0;
             })
-          : state.countries.sort(function (a, b) {
+          : state.countries.map((e)=> e).sort(function (a, b) {
               if (a.population > b.population) {
                 return 1;
               }
@@ -112,24 +128,9 @@ const rootReducer = (state = initialState, action) => {
             });
       return {
         ...state,
-        allCountries: sortedArr2,
+        countries: sortedArr2,
       };
-    case FILTER_ACTIVITY:
-      let filter =
-        action.payload === "no filter"
-          ? state.allCountries
-          : state.allCountries.filter((country) => {
-              const activities = country.activities.map(
-                (activity) => activity.name
-              );
-              // console.log(activities.includes(action.payload))
-
-              return activities.includes(action.payload);
-            });
-      return {
-        ...state,
-        countries: filter,
-      };
+    
     case SET_CURRENT_PAGE:
       return {
         ...state,

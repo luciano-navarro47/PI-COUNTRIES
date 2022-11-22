@@ -4,10 +4,6 @@
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
-    /* background-origin: border-box; */
-    /* justify-content: center;
-    align-items: center;  */
-    
 }
 
 
@@ -24,16 +20,12 @@
     align-items: center;
     border-radius: 60px;
     margin-top: 10px;
-    
-    /* position: relative;
-    left: 720px; */
-    
+    border: 5px solid rgba(255, 217, 0, 0.315);
 }
 
 .buttonCreate{
     border-radius: 2px;
-    border: none;  
-   
+    border: none; 
 }
 
 .containerButton{
@@ -41,6 +33,3 @@
     margin-top: 10px;
 }
 
-/* .paginado{
-    color: red;
-} */

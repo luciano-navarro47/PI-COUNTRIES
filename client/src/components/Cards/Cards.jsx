@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../Card/Card"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getAllCountries } from "../../actions";
+import { getAllCountries } from "../../redux/actions";
 import "./Cards.css"
 
 export default function Cards({ currentCountries }) {

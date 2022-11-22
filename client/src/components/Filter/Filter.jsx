@@ -7,12 +7,14 @@ import {
   filterCountriesByContinent,
   orderByName,
   orderByPopulation,
-} from "../../actions";
-import { setCurrentPage } from "../../actions";
+  setCurrentPage
+} from "../../redux/actions";
+import "./Filter.css"
 
-export default function Filter({ setOrden, handler }) {
+export default function Filter({handler}){
 
   const dispatch = useDispatch();
+
   const allActivities = useSelector((state) => state.activities);
   const mapActivities = allActivities.map((element) => element.name);
   const uniqueActivities = mapActivities.filter((item, index) => {
@@ -25,17 +27,13 @@ export default function Filter({ setOrden, handler }) {
     e.preventDefault();
     dispatch(filterActivity(e.target.value));
     handler({1:true})
-    // console.log(handler({1:true}))
-    // setOrden(`orden ${e.target.value}`);
-    // console.log(setOrden(e.target.value))
+    dispatch(setCurrentPage(1))
   }
 
   function handleFilterContinent(e) {
     dispatch(filterCountriesByContinent(e.target.value));
     dispatch(setCurrentPage(1));
     handler({1:true})
-    // setOrden(e.target.value);
-   
   }
 
   function handleSort(e) {
@@ -43,7 +41,6 @@ export default function Filter({ setOrden, handler }) {
     dispatch(orderByName(e.target.value));
     dispatch(setCurrentPage(1));
     handler({1:true})
-    // setOrden(`Order ${e.target.value}`);
   }
 
   function handleSortPopulation(e) {
@@ -51,8 +48,6 @@ export default function Filter({ setOrden, handler }) {
     dispatch(orderByPopulation(e.target.value));
     dispatch(setCurrentPage(1))
     handler({1:true})
-    // setOrden(`Order ${e.target.value}`);
- 
   }
 
   useEffect(() => {
@@ -61,13 +56,13 @@ export default function Filter({ setOrden, handler }) {
 
   return (
     <div>
-      <select onChange={(e) => handleSort(e)}>
+      <select className="button-33" onChange={(e) => handleSort(e)}>
         <option value="default">General order</option>
         <option value="asc">A-Z</option>
         <option value="desc">Z-A</option>
       </select>
       
-      <select onChange={(e) => handleFilterContinent(e)}>
+      <select className="button-33" onChange={(e) => handleFilterContinent(e)}>
         <option value="All">All continents</option>
         <option value="Asia">Asia</option>
         <option value="Americas">Americas</option>
@@ -77,7 +72,7 @@ export default function Filter({ setOrden, handler }) {
         <option value="Antarctic">Antartic</option>
       </select>
 
-      <select onChange={(e) => handleSelect(e)}>
+      <select className="button-33" onChange={(e) => handleSelect(e)}>
         <option value="no filter">Countries Activities</option>
         {uniqueActivities.map((activity) => (
           <option value={activity} key={activity}>
@@ -88,7 +83,7 @@ export default function Filter({ setOrden, handler }) {
         
       </select>
 
-      <select onChange={(e) => handleSortPopulation(e)}>
+      <select className="button-33" onChange={(e) => handleSortPopulation(e)}>
         <option value="minmax">Population: - to +</option>
         <option value="maxmin">Population: + to -</option>
       </select>
