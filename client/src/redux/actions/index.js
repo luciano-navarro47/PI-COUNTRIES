@@ -13,7 +13,7 @@ export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
 
 export function getAllCountries() {
   return async function (dispatch) {
-    const allCountries = await axios.get("http://localhost:3001/countries", {});
+    const allCountries = await axios.get("http://localhost:3001/countries");
     return dispatch({ type: GET_ALL_COUNTRIES, payload: allCountries.data });
   };
 }

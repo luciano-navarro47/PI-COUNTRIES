@@ -1,5 +1,5 @@
 .mainConteiner{
-    background: /* linear-gradient(to top, transparent, mistyrose) */ url(https://okdiario.com/img/2021/01/22/cuantos-paises-hay-en-el-mundo-y-cuales-son.jpg) ; 
+    background: url(https://okdiario.com/img/2021/01/22/cuantos-paises-hay-en-el-mundo-y-cuales-son.jpg) ; 
     background-position-y: -90px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -11,7 +11,27 @@
     align-items: center;
 }
 
-/*-*//*-*//*-*//*-*//*-*//*-*//*-*//*-*/
+.containerOne{
+    width: 420px;
+    height: 500px;
+    background-color: rgba(206, 76, 76, 0.63);
+    margin-right: 10px;
+    margin-right: 600px;
+    border-radius: 5rem;
+    display: flex;
+    font-family: cursive;
+    text-align: center;
+    border: 1px solid whitesmoke;
+}
+
+.containerOne p{
+    font-size:xx-large;
+    font-weight: 700;
+}
+
+.containerTwo{
+    margin-right: 200px;
+}
 
 .btn4{
    align-items: center;

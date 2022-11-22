@@ -55,6 +55,11 @@ const allCountries = useSelector((state) => state.countries);
     
   }
 
+  function handle2(e){
+    e.preventDefault()
+    dispatch(setInput)
+  }
+
   function handleSelectCountry(e){
     setInput({
       ...input,

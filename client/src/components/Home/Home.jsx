@@ -43,16 +43,14 @@ export default function Home() {
     <div className="conteinerHome">
       <div className="container2">
         <h1>¡All countries within reach of your screen!</h1>
-      
       </div>
       <div className="containerButton">
-      <button className="buttonCreate"><Link to="/activities">♥Create Activity♥</Link>
-          </button>
+     <Link  className="button-55" to="/activities">♥Create Activity♥</Link>
+          
       </div>
-      <div >
+      <div className="searchClass">
         <SearchBar />
       </div>
-      .
       <Filter
       handler={handler}
       />
@@ -62,14 +60,11 @@ export default function Home() {
         allCountries={allCountries.length}
         active={active}
         setActive={setActive}
-        
       />
       <hr></hr>
       <div className="containerCountry">
         <Cards currentCountries={currentCountries}/>
-      
       </div>
-      
     </div>
   );
 }
