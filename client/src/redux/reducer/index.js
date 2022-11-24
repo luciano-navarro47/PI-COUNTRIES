@@ -9,6 +9,8 @@ import {
   ORDER_BY_NAME,
   SET_CURRENT_PAGE,
   ORDER_BY_POPULATION,
+  DELETE_ACTIVITY,
+  UPDATE_ACTIVITY
 } from "../actions/index.js";
 
 const initialState = {
@@ -136,7 +138,19 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         actualPage: action.payload,
       };
-
+    case DELETE_ACTIVITY:
+      const filterActivities = state.activities?.filter((activity)=> activity.id !== action.payload.id)
+      return {
+        ...state,
+        activities: filterActivities
+      }
+    case UPDATE_ACTIVITY:
+      return{
+        ...state,
+        activities: state.activities?.map((activity)=>
+          activity.id === action.payload.id ? action.payload : activity
+        )
+      };
     default:
       return {
         ...state,

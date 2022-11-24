@@ -17,7 +17,7 @@ export default function Home() {
   const allCountries = useSelector((state) => state.countries);
 
 
-  const [countriesPerPage, setCountriesPerPage] = useState(9);
+  const [countriesPerPage, setCountriesPerPage] = useState(9.99);
 
   const [active, setActive] = useState({ [currentPage]: true });
 
@@ -25,8 +25,8 @@ export default function Home() {
   const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
 
   const currentCountries =
-    currentPage === 1 ? allCountries.slice(0, 9) : currentPage === 28 ? 
-    allCountries.slice(indexOfFirstCountry, allCountries.length) 
+    currentPage === 1 ? allCountries.slice(0, 9) : currentPage === 26 ? 
+    allCountries.slice(249, allCountries.length) 
       : allCountries.slice(indexOfFirstCountry, indexOfLastCountry);
 
 

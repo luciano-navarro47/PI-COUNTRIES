@@ -9,6 +9,7 @@
     height: 100%;
     justify-content: center;
     align-items: center;
+    
 }
 
 .formulario{
@@ -22,6 +23,7 @@
     border: 2px solid rgba(255, 68, 0, 0.527);
     margin-top: 50px;
     font-weight: 650;
+    
 }
 
 
@@ -42,6 +44,14 @@
     background-color: rgba(0, 255, 255, 0.082);
     border-radius: 10px;
     width: 100%;
+}
+
+
+
+.inputCountries{
+  background-color: rgba(218, 165, 32, 0.541);
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
 }
 
 .button-8 {

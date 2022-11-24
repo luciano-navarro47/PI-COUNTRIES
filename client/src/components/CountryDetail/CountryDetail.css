@@ -45,7 +45,7 @@
 
   } 
 
-.GoBack{
+.goBack{
     margin-top: 20px;
     margin-left: 20px;
     display: flex;
@@ -63,7 +63,7 @@
     justify-content: center;
     align-items: center;
     font-weight: 700;
-    color: rgba(228, 225, 225, 0.938);
+    color:rgb(245, 219, 219);
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     margin-left: 10px;
     box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
@@ -79,8 +79,10 @@
     position: relative;
     justify-content: center;
     align-items: center;
+    font-size: xx-large;
     font-weight: 700;
-    color: rgb(248, 244, 244);
+    width: 300px;
+    color: rgb(245, 219, 219);
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
   -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
@@ -90,7 +92,7 @@
     background-color: rgba(65, 65, 216, 0.349);
     border-radius: 4px;
     border: 2px solid rgba(9, 157, 255, 0.322);
-    width: 100px;
+    width: 160px;
     display: flex;
     position: relative;
     justify-content: center;
@@ -98,7 +100,7 @@
     margin-left: 100px;
     font-size: x-large;
     font-weight: 500;
-    color: rgb(223, 219, 219);
+    color: rgb(245, 219, 219);
     box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
   -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
   -moz-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
@@ -117,7 +119,7 @@
    
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    
+    margin-left: 10px;
     width: 100%;
     height: 120px;
     background-repeat: no-repeat;
@@ -134,13 +136,23 @@
         border-radius: 10px;
         width: 100%;
         height: 100%;
+        box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+  -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+  -moz-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+        
 }
 
 .subContainer2 h4{
     background-color: rgba(163, 203, 230, 0.349);
-    font-size: larger;
-    display: flex;
-    width: 300px;
+    font-size: x-large;
+    width: 350px;
+    margin-left: 100px;
+    display: inline-flex;
+    border-radius: 1rem;
+    justify-content: center;
+    box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+  -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+  -moz-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
 }
 .subContainer2 h3{
     background-color: rgba(223, 132, 29, 0.308);
@@ -150,6 +162,10 @@
     font-family: cursive;
     width: 400px;
     margin-left: 750px;
+    border-radius: 3px;
+    box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+  -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+  -moz-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
 }
 
 .subContainer3 h4{
@@ -165,6 +181,45 @@
     align-content: center;
     margin-left: 700px;
     border-radius: 1rem;
+    box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+  -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+  -moz-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
 }
 
+/* CSS */
+.button-24 {
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.button-24:active {
+  opacity: .5;
+}
 

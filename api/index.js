@@ -19,13 +19,13 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const { countriesToDb } = require("./src/routes/Controllers/controllers.js")
+const { createCountriesToDb } = require("./src/routes/Controllers/controllers.js")
 const {PORT } = process.env
 
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
-  countriesToDb()
+  createCountriesToDb()
   server.listen( PORT, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });

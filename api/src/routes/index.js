@@ -4,6 +4,7 @@ const { Router } = require('express');
 
 const countries = require('./Controllers/countryControllers.js')
 const activities = require('./Controllers/activitiesControllers.js')
+// const deleted = require("./Controllers/activitiesControllers.js")
 
 const router = Router();
 

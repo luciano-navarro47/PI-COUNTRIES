@@ -7,29 +7,14 @@ import "./CreateActivity.css"
 
 
 export default function CreateActivity(name, duration, season, difficulty) {
-
-  function validate(input){
-    let errors = {};
-
-    if(!input.name){
-      errors.name = "Activity name required"
-    } else if(!input.duration || input.duration === 0){
-      errors.duration = "Activity duration required"
-    } else if(!input.season){
-      errors.season = "Season of the required activity"
-    } else if(!input.difficulty){
-      errors.difficulty = "Degree of difficulty required"
-    }
-    return errors;
-}
 const dispatch = useDispatch();
 
 const history = useHistory()
 
 const allCountries = useSelector((state) => state.countries);
 
-  const [errors, setErrors] = useState({})
-  const [input, setInput] = useState({
+const [errors, setErrors] = useState({})
+const [input, setInput] = useState({
     name: "",
     difficulty: 0,
     duration: "",
@@ -43,22 +28,34 @@ const allCountries = useSelector((state) => state.countries);
     dispatch(getAllCountries());
   }, [dispatch]);
 
-  function handleChange(e){
-    setInput({
-      ...input,
-      [e.target.name] : e.target.value
-    })
-    setErrors(validate({
-      ...input,
-      [e.target.name] : e.target.value
-    }))
-    
-  }
+/////////////////////////////////////
 
-  function handle2(e){
-    e.preventDefault()
-    dispatch(setInput)
+function validate(input){
+  let errors = {};
+
+  if(!input.name){
+    errors.name = "Activity name required"
+  } if(!input.duration || input.duration === 0){
+    errors.duration = "Activity duration required"
+  } else if(!input.season){
+    errors.season = "Season of the required activity"
+  } else if(!input.difficulty){
+    errors.difficulty = "Degree of difficulty required"
   }
+  return errors;
+}
+
+function handleChange(e){
+  setInput({
+    ...input,
+    [e.target.name] : e.target.value
+  })
+  setErrors(validate({
+    ...input,
+    [e.target.name] : e.target.value
+  }))
+  
+}
 
   function handleSelectCountry(e){
     setInput({
@@ -139,7 +136,8 @@ const allCountries = useSelector((state) => state.countries);
         </div>
         <div className="pes">
           <p>Countries: </p>
-          <select onChange={(e)=>handleSelectCountry(e)}>
+          <select defaultValue="default" onChange={(e)=>handleSelectCountry(e)}>
+            <option hidden value='default'>Select countries...</option>
             {allCountries.map((country)=>(
               <option value={country.name}>{country.name}</option>))}
           </select>
@@ -147,14 +145,16 @@ const allCountries = useSelector((state) => state.countries);
           {input.countries.map(el => el + ", ")}
           </div>
         </div>
-          <button className="button-8" type="submit"> FINISH CREATING! </button>
+          <button className="button-8" type="submit" disabled={!input.countries.length}> FINISH CREATING! </button>
       </form>
+      <div>
       {input.countries.map((country)=>
-        <div>
-          <p>{country}</p>
-          <button onClick={()=> handleDelete(country)}>x</button>
+        <div className="inputCountries">
+          <p >{country}</p>
+          <button  onClick={()=> handleDelete(country)}>x</button>
         </div>
       )}
+      </div>
     </div>
     </div>
   );

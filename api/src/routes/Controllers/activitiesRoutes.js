@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { createActivity, getAllActivities } = require("./controllers.js");
+const { createActivity, getAllActivities, deleteActivity, updateActivity } = require("./controllers.js");
 
 const router = Router();
 
@@ -33,6 +33,29 @@ router.get("/", async(req, res)=>{
     }
 })
 
+router.put("/:id", async(req, res)=>{
+  try {
+    const {id} = req.params;
+    const { name, difficulty } = req.body;
+    if(!name || !difficulty){
+      res.status(400).send("Missing data to update activity")
+    }else {
+      const activityUpdated = await updateActivity(id, name, difficulty)
+      res.status(200).send("Activity successfully updated!")
+    }
+  } catch (error) {
+    res.status(400).send(error)
+  }
+})
 
+router.delete("/:id", async(req, res)=>{
+    try {
+      const {id}= req.params
+      const deleted = await deleteActivity(id)
+      res.status(200).send("Activity successfully deleted!")
+    } catch (error) {
+      res.status(400).send(error)
+    }
+})
 
 module.exports = router;
