@@ -3,20 +3,21 @@ const { Country, Activities } = require("../../db.js");
 
 const createCountriesToDb = async () => {
   const apiInfo = await axios.get("https://restcountries.com/v3/all");
+  // console.log(apiInfo.data)
   const data = await apiInfo.data.map((el) => {
     return {
       id: el.cca3,
       name: el.name.common,
       continent: el.region,
-      capital: el.capital ? el.capital[0] : "x",
-      subregion: el.subregion ? el.subregion : "x",
+      capital: el.capital ? el.capital[0] : "Without capital",
+      subregion: el.subregion ? el.subregion : "Without subregion",
       area: el.area,
       population: el.population,
       flags: el.flags[1],
     };
   });
 
-  // console.log("soy la data de la linea 6", data)
+
 
   data.forEach((country) => {
     Country.findOrCreate({
@@ -35,17 +36,6 @@ const createCountriesToDb = async () => {
   // console.log("soy el forEach() de la linea 19", data)
 };
 
-const findCountryById = (id, countries) => {
-  const filterCountry = countries.find(
-    (country) => country.id.toLowerCase() === id.toLowerCase()
-  );
-  // console.log("soy el find() de la linea 39 en controllers" , filterCountry)
-  if (!filterCountry) {
-    throw new Error("No se encontró un pais con ese ID");
-  }
-  return filterCountry;
-};
-
 const getAllCountriesDb = async () => {
   const allCountries = await Country.findAll({
    
@@ -56,22 +46,8 @@ const getAllCountriesDb = async () => {
       },
     ],
   });
-   return allCountries;
-};
-
-const createActivity = async (name, difficulty, duration, season, paises) => {
-  let newActivity = await Activities.create({
-    name,
-    difficulty,
-    duration,
-    season,
-  });
-  const allCountries = await Country.findAll({
-    where: {
-      name: paises,
-    },
-  });
-  newActivity.addCountry(allCountries);
+  // console.log("hellouuuuu",allCountries)
+  return allCountries;
 };
 
 const getAllActivities = async () => {
@@ -88,8 +64,39 @@ const getAllActivities = async () => {
       },
     ],
   });
+  console.log("getAllActivities", data)
   return data;
 };
+
+const findCountryById = (id, countries) => {
+  const filterCountry = countries.find(
+    (country) => country.id.toLowerCase() === id.toLowerCase()
+  );
+  // console.log("soy el find() de la linea 39 en controllers" , filterCountry)
+  if (!filterCountry) {
+    throw new Error("No se encontró un pais con ese ID");
+  }
+  return filterCountry;
+};
+
+
+
+const createActivity = async (name, difficulty, duration, season, paises) => {
+  let newActivity = await Activities.create({
+    name,
+    difficulty,
+    duration,
+    season,
+  });
+  const allCountries = await Country.findAll({
+    where: {
+      name: paises,
+    },
+  });
+  newActivity.addCountry(allCountries);
+};
+
+
 
 const updateActivity = async(id, name, difficulty) =>{
     const activityDb = await Activities.findByPk(id);

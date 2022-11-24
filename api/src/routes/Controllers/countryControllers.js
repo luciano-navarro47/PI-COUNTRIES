@@ -23,6 +23,11 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/allCountries", async (req, res)=>{
+  const allCountries = await getAllCountriesDb()
+  res.status(200).send(allCountries)
+})
+
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -34,6 +39,7 @@ router.get("/:id", async (req, res) => {
     throw new Error(error);
   }
 });
+
 
 // router.get("/dbCountries", async (req, res) => {
 //   const countries = await Country.findAll();
