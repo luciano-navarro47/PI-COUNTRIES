@@ -2,32 +2,19 @@ import React from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { getCountryDetail, deleteActivity, updateActivity } from "../../redux/actions/index.js";
+import { getCountryDetail } from "../../redux/actions/index.js";
 import { useEffect } from "react";
 import "./CountryDetail.css"
 
 export default function CountryDetail(props) {
 
-  const { id } = useParams(); 
-  
+
   const history = useHistory(); 
 
   const dispatch = useDispatch();
   const countryDetail = useSelector((state) => state.countryDetail);
   const countryId = props.match.params.id;
   
-  
-  function handleDelete(id){
-    dispatch(deleteActivity(id))
-    alert("Activity successfully deleted")
-    history.push("/home")
-  }
-
-  // function handleUpdate(){
-  //   dispatch(updateActivity())
-  //   alert("Activity successfully updated")
-  //   history.push("/home")
-  // }
 
   useEffect(() => {
     dispatch(getCountryDetail(countryId));
@@ -35,8 +22,6 @@ export default function CountryDetail(props) {
 
 
 return (
-
-  
   <div className="maincointainer">
       <div className="goBack">
         <Link to="/home" className="btn-detail">Go Back</Link> 
@@ -63,15 +48,12 @@ return (
                   <p>Difficulty: {`${activity.difficulty}/5`}</p>
                   <p>Duration: {`${activity.duration} minutes`}</p>
                   <p>Season: {activity.season}</p>
-                  <button className="button-24" onClick={(e)=>handleDelete(e)}>x</button>
                   <hr />
               </div>
           )}
       </h3>
         </div>
       </div>
-      
-     
       </div>
 )
 };

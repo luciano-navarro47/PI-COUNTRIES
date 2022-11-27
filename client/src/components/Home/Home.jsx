@@ -44,6 +44,9 @@ export default function Home() {
       <div className="container2">
         <h1>¡All countries within reach of your screen!</h1>
       </div>
+      <div>
+        <Link to="/aboutMe"><button>About</button></Link>
+      </div>
       <div className="containerButton">
      <Link  className="button-55" to="/activities">♥Create Activity♥</Link>
           
@@ -65,6 +68,7 @@ export default function Home() {
       <div className="containerCountry">
         <Cards currentCountries={currentCountries}/>
       </div>
+      
     </div>
   );
 }

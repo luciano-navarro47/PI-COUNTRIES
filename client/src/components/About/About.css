@@ -1,0 +1,104 @@
+
+.backgroundDiv{
+    background-image: url("./dark-green-low.jpg");
+    background-position-y: -90px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position:absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.oneIcon{
+    position: relative;
+    top: 120px;
+}
+
+.conteinerIcons{
+    background-color: rgba(93, 230, 184, 0.357);
+    width: 760px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    position: relative;
+    left: 570px;
+    bottom: 150px;
+    transition: all ease 300ms;
+    box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+    -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+    -moz-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+}
+
+.shadow img{
+    transition: all ease 300ms;
+    box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+    -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+    -moz-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+}
+
+.span1{
+    background-color: rgba(248, 151, 16, 0.451);
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-content: center;
+    font-weight: 300px;
+    font-size: 22px;
+    font-family: cursive;
+    color: bisque;
+    width: 400px;
+    height: 400px;
+    left: 0;
+    top: 0;
+    margin-top: 100px;
+    margin-left: 30px;
+    border-radius: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    transition: all ease 300ms;
+    box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+    -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+    -moz-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+}
+
+.span2{
+    background-color: rgba(86, 86, 192, 0.536);
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-content: center;
+    font-weight: 300px;
+    font-size: 22px;
+    font-family: cursive;
+    color: rgb(235, 222, 205);
+    width: 420px;
+    height: 420px;
+    left: 1480px;
+    bottom: 170px;
+    border-radius: 10px;
+    border: 1px solid rgb(242, 248, 242);
+    transition: all ease 300ms;
+    box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+    -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+    -moz-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+}
+
+.span3{
+    background-color: rgb(60, 59, 59);
+    color: rgb(251, 224, 224);
+    width: 380px;
+    height: 35px;
+    display: inline-flex;
+    position: relative;
+    font-size: 20px;
+    bottom: 180px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    transition: all ease 300ms;
+    box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+    -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+    -moz-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+}

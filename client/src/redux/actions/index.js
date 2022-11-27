@@ -8,10 +8,9 @@ export const CREATE_ACTIVITY = "CREATE_ACTIVITY";
 export const FILTER_BY_CONTINENT = "FILTER_BY_CONTINENT";
 export const FILTER_ACTIVITY = "FILTER_ACTIVITY";
 export const ORDER_BY_NAME = "ORDER_BY_NAME";
-export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 export const ORDER_BY_POPULATION = "ORDER_BY_POPULATION";
-export const DELETE_ACTIVITY = "DELETE_ACTIVITY";
-export const UPDATE_ACTIVITY = "UPDATE_ACTIVITY"
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+
 
 export function getAllCountries() {
   return async function (dispatch) {
@@ -22,7 +21,7 @@ export function getAllCountries() {
 
 export function getCountryDetail(id) {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/countries/${id}`, {});
+    const json = await axios.get(`http://localhost:3001/countries/${id}`);
 
     return dispatch({
       type: GET_DETAIL,
@@ -66,7 +65,6 @@ export function createActivity(payload) {
         "http://localhost:3001/activities",
         payload
       );
-      console.log(json)
       return dispatch({ type: CREATE_ACTIVITY, payload: payload });
     } catch (error) {
       console.log(error);
@@ -109,31 +107,6 @@ return {
   };
 }
 
-export function deleteActivity(id){
-  return async function(dispatch){
-      try {
-        const json = await axios.delete(`http://localhost:3001/activities/${id}`)
-        return dispatch({
-            type: DELETE_ACTIVITY,
-            payload: json.data
-        })
-      } catch (error) {
-        alert("Activity not delete")
-      }
-  }
-}
-
-export function updateActivity(payload, id){
-    return async function(dispatch){
-      try {
-        await axios.put(`/activities/${id}`, payload)
-        console.log("soy el payload", payload)
-        return dispatch({type: UPDATE_ACTIVITY}, payload)
-      } catch (error) {
-        alert("Activity not update")
-      }
-    }
-}
 
 
 

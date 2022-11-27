@@ -25,7 +25,7 @@ export default function Cards({ currentCountries }) {
               continent={country.continent}
               />)
           })
-        : "That country does not exists"}
+        : "Loading..."}
   
     </div>
   )

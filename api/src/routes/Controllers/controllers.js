@@ -9,15 +9,13 @@ const createCountriesToDb = async () => {
       id: el.cca3,
       name: el.name.common,
       continent: el.region,
-      capital: el.capital ? el.capital[0] : "Without capital",
-      subregion: el.subregion ? el.subregion : "Without subregion",
+      capital: el.capital ? el.capital[0] : "x",
+      subregion: el.subregion ? el.subregion : "x",
       area: el.area,
       population: el.population,
       flags: el.flags[1],
     };
   });
-
-
 
   data.forEach((country) => {
     Country.findOrCreate({
@@ -33,7 +31,6 @@ const createCountriesToDb = async () => {
       },
     });
   });
-  // console.log("soy el forEach() de la linea 19", data)
 };
 
 const getAllCountriesDb = async () => {
@@ -64,22 +61,19 @@ const getAllActivities = async () => {
       },
     ],
   });
-  console.log("getAllActivities", data)
+  // console.log("getAllActivities", data)
   return data;
 };
 
 const findCountryById = (id, countries) => {
   const filterCountry = countries.find(
-    (country) => country.id.toLowerCase() === id.toLowerCase()
-  );
-  // console.log("soy el find() de la linea 39 en controllers" , filterCountry)
+    (country) => country.id.toLowerCase() === id.toLowerCase());
+  // console.log("soy el find()" , filterCountry)
   if (!filterCountry) {
-    throw new Error("No se encontró un pais con ese ID");
+    throw new Error("A country with that ID was not found");
   }
   return filterCountry;
 };
-
-
 
 const createActivity = async (name, difficulty, duration, season, paises) => {
   let newActivity = await Activities.create({
@@ -88,34 +82,13 @@ const createActivity = async (name, difficulty, duration, season, paises) => {
     duration,
     season,
   });
-  const allCountries = await Country.findAll({
+  const countries = await Country.findAll({
     where: {
       name: paises,
     },
   });
-  newActivity.addCountry(allCountries);
+  newActivity.addCountry(countries);
 };
-
-
-
-const updateActivity = async(id, name, difficulty) =>{
-    const activityDb = await Activities.findByPk(id);
-    activityDb.update({
-      name: name,
-      difficulty: difficulty
-    })
-
-    return activityDb;
-}
-
-const deleteActivity = async(id)=>{
-
-    const activityDb = await Activities.findByPk(id);
-    await activityDb.destroy()
-    // const destroyActivity = activityDb.destroy();
-    // return destroyActivity;
-
-}
 
 module.exports = {
   getAllCountriesDb,
@@ -123,6 +96,4 @@ module.exports = {
   findCountryById,
   createCountriesToDb,
   createActivity,
-  deleteActivity,
-  updateActivity
 };

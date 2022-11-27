@@ -1,0 +1,77 @@
+.nav{
+    background-color: rgba(154, 154, 69, 0.781);
+    height: 55px;
+    border: 1px solid rgba(60, 58, 58, 0.79);
+    border-radius: 2px;
+}
+
+.buttonHome{
+    cursor: pointer;
+    position: relative;
+    text-decoration-line: none;
+    border: 3px solid rgba(60, 58, 58, 0.685);
+    width: 100px;
+    height: 55px;
+    left: 96px;
+    bottom: 4px;
+    text-decoration-line: none;
+}
+
+.buttonForm{
+    cursor: pointer;
+    position: relative;    
+    text-decoration-line: none;
+    border: 3px solid rgba(60, 58, 58, 0.685);
+    width: 130px;
+    left: 200px;
+    height: 55px;
+    bottom: 67px;
+    padding: 1px;
+    margin-left: 0px;
+
+}
+
+.link1{
+    text-decoration-line: none;
+    position: relative;
+    top: 15px;
+    color: rgb(66, 65, 65);
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.buttonHome:hover{
+    background-color: rgba(138, 130, 130, 0.653);
+    transition: .7s ease-in-out all;
+    border: 3px solid rgba(117, 117, 88, 0.781);
+    border-radius: 1px;
+}
+
+.buttonForm:hover{
+    background-color: rgba(128, 128, 128, 0.549);
+    transition: .3s ease-in-out all;
+    border: 3px solid rgba(117, 117, 88, 0.781);
+    border-radius: 1px;
+}
+
+
+.about{
+    background-color: rgba(239, 244, 244, 0);
+    border: 3px solid rgba(60, 58, 58, 0.685);
+    border-radius: 1px;
+    width: 90px;
+    height: 57px;
+    display: inline-flex;
+    justify-content: center;
+    position: relative;
+   bottom: 130px;
+}
+
+.about h3{
+    color: rgb(60, 58, 58);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 
+    Arial, sans-serif;
+    font-size:large;
+    font-weight: 900;
+    position: relative;
+}

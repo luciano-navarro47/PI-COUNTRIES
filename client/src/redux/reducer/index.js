@@ -8,9 +8,7 @@ import {
   FILTER_ACTIVITY,
   ORDER_BY_NAME,
   SET_CURRENT_PAGE,
-  ORDER_BY_POPULATION,
-  DELETE_ACTIVITY,
-  UPDATE_ACTIVITY
+  ORDER_BY_POPULATION
 } from "../actions/index.js";
 
 const initialState = {
@@ -47,7 +45,7 @@ const rootReducer = (state = initialState, action) => {
     case CREATE_ACTIVITY:
       return {
         ...state,
-        createActivity: [...state.activities, action.payload],
+        activities: [...state.activities, action.payload],
       };
 
     case FILTER_BY_CONTINENT:
@@ -137,20 +135,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         actualPage: action.payload,
-      };
-    case DELETE_ACTIVITY:
-      const filterActivities = state.activities?.filter((activity)=> activity.id !== action.payload.id)
-      return {
-        ...state,
-        activities: filterActivities
-      }
-    case UPDATE_ACTIVITY:
-      return{
-        ...state,
-        activities: state.activities?.map((activity)=>
-          activity.id === action.payload.id ? action.payload : activity
-        )
-      };
+      };  
     default:
       return {
         ...state,
