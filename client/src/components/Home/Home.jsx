@@ -45,7 +45,7 @@ export default function Home() {
         <h1>¡All countries within reach of your screen!</h1>
       </div>
       <div>
-        <Link to="/aboutMe"><button>About</button></Link>
+        <Link to="/aboutMe"><button className="button-28"><p>About</p></button></Link>
       </div>
       <div className="containerButton">
      <Link  className="button-55" to="/activities">♥Create Activity♥</Link>

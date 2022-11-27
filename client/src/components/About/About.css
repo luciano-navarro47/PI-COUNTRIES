@@ -25,18 +25,43 @@
     border-radius: 5px;
     position: relative;
     left: 570px;
-    bottom: 150px;
+    bottom: 130px;
     transition: all ease 300ms;
     box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
     -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
     -moz-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
 }
 
-.shadow img{
-    transition: all ease 300ms;
-    box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
-    -webkit-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
-    -moz-box-shadow: -1px 3px 16px 9px rgba(0,0,0,0.43);
+.conteinerAccounts{
+    height: 80px;
+    background-color: rgba(130, 118, 118, 0.798);
+    position: relative;
+    bottom: 40px;
+    
+}
+
+.conteinerAccounts h4{
+    display: flex;
+    justify-content: center;
+    text-decoration:underline;
+}
+
+.conteinerAccounts a{
+    position: relative;
+    bottom: 10px;
+}
+
+.conteinerAccounts img{
+    margin-left: 8px;
+}
+
+.moveHr{
+    position: relative;
+    bottom: 30px;
+}
+.moveHr2{
+    position: relative;
+    bottom: 36px;
 }
 
 .span1{
@@ -93,7 +118,7 @@
     display: inline-flex;
     position: relative;
     font-size: 20px;
-    bottom: 180px;
+    bottom: 160px;
     border-radius: 10px;
     align-items: center;
     justify-content: center;
