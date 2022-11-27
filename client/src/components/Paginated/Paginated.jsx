@@ -34,24 +34,6 @@ export default function Paginated({ countriesPerPage, allCountries, setActive, a
     pageNumbers.push(i + 1);
   }
 
-  // return (
-  //   <ul  >
-  //     {/* <a> <button onClick={handlePrev} disabled={currentPage === 1}>Previous</button></a>  */}
-      
-  //     {
-  //       pageNumbers?.map(n => {
-  //         return (
-  //           <a key={n}> <button name={n} value={currentPage} onClick={(event)=>handlerClick(event,n)} 
-  //           className={active[n]?style.buttonactual : style.button}> {n} </button> </a>
-  //         )
-  //       })
-  //     }
-  //       {/* <a><button onClick={handleNext} disabled={!allCountries || currentPage === Math.ceil(allCountries/countriesPerPage)}>Next</button> </a> */}
-  //   </ul>
-  // )
-
-
-
   return (
     <div>
         { <a><button className={style.prev} onClick={handlePrev} disabled={currentPage === 1}>prev</button></a> }

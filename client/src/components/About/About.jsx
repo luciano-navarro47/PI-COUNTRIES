@@ -10,10 +10,10 @@ export default function About() {
     <div className="backgroundDiv">
       <NavBar />
       <span className="span1">
-        Hello How are you?! My name is Luciano Navarro, I am 29 years old and
-        I live in Buenos Aires. I have been studying Full Stack Developers at
-        Henry for five months. Now you are witnessing to see and go through my
-        first application!!.Personally, for me, this individual project has
+        ¡Hello! How are you? My name is Luciano Navarro, I am 29 years old and
+        I live in Buenos Aires, Argentina. I have been studying Full Stack Developers at
+        Henry for five months. Now, you are witnessing to see and go through my
+        first application! Personally, for me, this individual project has
         further increased the love for designing websites.I know very well that
         this is the beginning of many future projects in my life!I hope you
         enjoyed it and thank you very much for reading ♥
@@ -22,10 +22,10 @@ export default function About() {
         <img src="https://static.thenounproject.com/png/3437694-200.png" alt="not found" />
       </div>
       <span className="span2">
-        ¡Hola, cómo andas?! Mi nombre es Luciano Navarro, tengo 29 años y
-        vivo en Buenos Aires. Estoy estudiando Full Stack Developers en Henry
-        desde hace cinco meses. Ahora vos están siendo testigos de ver y
-        recorrer mi primera aplicación!!.En lo personal, para mi, este proyecto
+        ¡Hola, ¿cómo andas?! Mi nombre es Luciano Navarro, tengo 29 años y
+        vivo en Buenos Aires, Argentina. Estoy estudiando Full Stack Developers en Henry
+        desde hace cinco meses. Ahora estás siendo testigo de ver y
+        recorrer mi primera aplicación! En lo personal, para mi, este proyecto
         individual ha incrementado aún más el cariño que le voy tomando a todo
         lo que es programar una página Web. Sé muy bien que este es el inicio de
         muchos futuros proyectos en mi vida! Espero que lo hayas disfrutado y
