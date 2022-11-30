@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3936f206.chunk.css",
+    "main.js": "/static/js/main.627a06b3.chunk.js",
+    "main.js.map": "/static/js/main.627a06b3.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f5b0d797.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f5b0d797.js.map",
+    "static/js/2.33a1bff8.chunk.js": "/static/js/2.33a1bff8.chunk.js",
+    "static/js/2.33a1bff8.chunk.js.map": "/static/js/2.33a1bff8.chunk.js.map",
+    "static/js/3.54caf62d.chunk.js": "/static/js/3.54caf62d.chunk.js",
+    "static/js/3.54caf62d.chunk.js.map": "/static/js/3.54caf62d.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.3936f206.chunk.css.map": "/static/css/main.3936f206.chunk.css.map",
+    "static/js/2.33a1bff8.chunk.js.LICENSE.txt": "/static/js/2.33a1bff8.chunk.js.LICENSE.txt",
+    "static/media/CreateActivity.css": "/static/media/3803235.bd7b457b.webp",
+    "static/media/Home.css": "/static/media/bolamundo.de547cc4.jpg",
+    "static/media/About.css": "/static/media/dark-green-low.100069a0.jpg",
+    "static/media/CountryDetail.css": "/static/media/linea-04-geografia-y-sociedad-1.8d2d243a.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f5b0d797.js",
+    "static/js/2.33a1bff8.chunk.js",
+    "static/css/main.3936f206.chunk.css",
+    "static/js/main.627a06b3.chunk.js"
+  ]
+}

@@ -29,6 +29,9 @@ const createCountriesToDb = async () => {
         population: country.population,
         flags: country.flags,
       },
+      default:{
+
+      }
     });
   });
 };
@@ -87,6 +90,7 @@ const createActivity = async (name, difficulty, duration, season, paises) => {
       name: paises,
     },
   });
+  console.log(countries)
   newActivity.addCountry(countries);
 };
 
