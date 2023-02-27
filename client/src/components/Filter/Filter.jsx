@@ -31,6 +31,7 @@ export default function Filter({handler}){
   }
 
   function handleFilterContinent(e) {
+    e.preventDefault()
     dispatch(filterCountriesByContinent(e.target.value));
     dispatch(setCurrentPage(1));
     handler({1:true})
