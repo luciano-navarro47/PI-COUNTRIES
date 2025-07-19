@@ -31,10 +31,7 @@ export default function Filter({handler}){
   }
 
   function handleFilterContinent(e) {
-<<<<<<< HEAD
-=======
     e.preventDefault()
->>>>>>> f72f63d (update react-scripts to 5.0.1 | refactor createCountriesToDb)
     dispatch(filterCountriesByContinent(e.target.value));
     dispatch(setCurrentPage(1));
     handler({1:true})

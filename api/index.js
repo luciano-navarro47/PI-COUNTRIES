@@ -21,7 +21,7 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const { createCountriesToDb } = require("./src/routes/Controllers/controllers.js")
-const {PORT } = process.env
+const {PORT} = process.env
 
 
 // Syncing all the models at once.
